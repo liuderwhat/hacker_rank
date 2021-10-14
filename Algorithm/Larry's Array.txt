@@ -1,0 +1,12 @@
+A "rotation" does not change the parity of the number of inversions. 
+That's the key to solving this. 
+The array can be sorted only if the initial number of inversions is even (this is because you want 0 inversions at the end, which is even).
+
+
+直接算inversions，每個數字都基準，會有多少數字小於且在基準右邊
+
+若inversions為偶數，此數列則可由小排到大，因為最後已排好的數列，其inversion數也是0
+
+數字5中，在其右方且小於5的數字為3.4，
+e.g. 125346 p(total) = p(5)+其他 = 2 + 0 = 2
+12[534]6 -> 124536 -> 123456

@@ -1,44 +1,42 @@
-s = input()
-def getKey(x):
-    if x.islower():
-        return(2,x)
-    elif x.isupper():
-        return(1,x)
-    elif x.isdigit() :
-        if int(x)%2==1:
-            return(3,x)
-        else :
-            return(4,x)
+'''
+2            
+6            
+4 3 2 1 3 4  
+3            
+1 3 2 
 
-print(sorted(s,key=getKey))
-# upper = []
-# lower = []
-# odd = []
-# even = []
+'''
+num_all = []
 
-# for i in s:
+def is_cude(c):
 
-#     if i.isalpha() and i.islower():
+    last, head = 0, len(c) - 1
+    current = max([c[0], c[-1]])
 
-#         lower.append(i)
-#     elif i.isalpha() and i.isupper():
-#         upper.append(i)
+    if current == c[0]:
+        head += 1
+    else:
+        last -= 1
 
-#     elif i.isdigit() :
+    for _ in range(len(c)-1):
+        
+        if c[head] > current or c[last] > current:
+            return 'No'
+        else : 
+            if c[head] >= c[last]:
+                current = c[head]
+                head += 1
+            else:
+                current = c[last]
+                last -= 1
 
-#         if int(i)%2:
-#             odd.append(i)
-#         else:
-#              even.append(i)
-       
+    return 'Yes'
 
-# lower.sort()
-# upper.sort()
-# odd.sort()
-# even.sort()
+for _ in range(int(input())):
+    num = int(input())
+    num_list = list(map(int, input().split()[:num]))
+    num_all.append(num_list)
 
-# lower.extend(upper)
-# lower.extend(odd)
-# lower.extend(even)
 
-# print(''.join(lower))
+[print(is_cude(i)) for i in num_all]
+
