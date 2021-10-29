@@ -31,16 +31,13 @@ class Solution:
         #Complete this method
         node = Node(data)
         if not head :
-            
             return node
         else:
             tail = head
             while tail.next:
                 tail = tail.next
-            tail.next = node
+            head.next = node
             return head
-
-        return head
         
 mylist= Solution()
 T=int(input())
