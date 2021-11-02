@@ -23,13 +23,16 @@ def encryption(s):
     length = len(s)
     row = math.floor(math.sqrt(length))
     col = math.ceil(math.sqrt(length))
-
+    # 依照行列把字串切開 e.g. 123456 -> 123 456
     spilt_res = [s[(i)*col:(i+1)*col] for i in range(col)]
+    # 因為長度不一定相等，所以計算長度
     res_leng = [len(i) for i in spilt_res]
     ans = []
-
+    
+    # 每一個迴圈會取每個spilt_res的當前的值
     for i in range(max(res_leng)):
         res = []
+        # 判斷是否超過每個數列的長度，若無則加入
         for x in spilt_res:
             if len(x) >= i+1:
                 res.append(x[i])

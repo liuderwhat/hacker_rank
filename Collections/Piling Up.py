@@ -31,19 +31,26 @@ for _ in range(int(input())):
 
 # method 3
 def is_cude(c):
-
+    
+    # 先找出左邊與右邊的值
+    # 並取最大值代表目前比較對象
     head, last = 0, len(c) - 1
     current = max([c[0], c[-1]])
 
+    # 當比較對象找出來時，最大者會加一個索引值
     if current == c[0]:
         head += 1
     else:
         last -= 1
 
+    # 只會比n-1次
     for _ in range(len(c)-1):
         
+        # 判斷有無違反規則 : 不能比目前的值大
         if c[head] > current or c[last] > current:
             return 'No'
+        # 若無違反則比較
+        # 與一開始一樣，大者前進並指派給current
         else : 
             if c[head] >= c[last]:
                 current = c[head]
@@ -51,8 +58,9 @@ def is_cude(c):
             else:
                 current = c[last]
                 last -= 1
-
-    return 'Yes'
+    # 若迴圈跑完代表都無違反規則
+    else:
+        return 'Yes'
 
 # method 4
 def is_cude(c):
@@ -69,44 +77,6 @@ def is_cude(c):
     else :
         print('No')
 
-# method 2
-def check_stack(cube_length):
-    
-    stack = []
-    l = 0
-    r = len(cube_length)-1
-    flag = True
-    for x in range(len(cube_length)):
-        if flag:
-            if cube_length[l] < cube_length[r]:
-
-                if not(stack):
-          
-                    stack.append(cube_length[r])
-                    r -= 1
-                else:
-          
-                    if cube_length[r] <= stack[x-1]:
-                        stack.append(cube_length[r])
-                        r -= 1
-                    else:
-                        flag = False
-
-            elif cube_length[l] >= cube_length[r]:
-        
-                if  not(stack):
-                    stack.append(cube_length[l])
-                    l += 1
-                else:
-        
-                    if cube_length[l] <= stack[x-1]:
-                        stack.append(cube_length[l])
-                        l += 1
-                    else:
-                        flag = False
-        else:
-            break
-    return flag
 
 t = int(input())
 ans = []

@@ -52,6 +52,17 @@ def pickingNumbers2(l):
         if c > maximum:
             maximum=c
     return maximum
+
+def pickingNumbers4(a):
+    
+    ans = []
+    for i in a:
+
+        tmp = [True for x in a if x-i==0 or x-i ==1]
+        ans.append(sum(tmp))
+
+    print(max(ans))
+
 if __name__ == '__main__':
     n = int(input().strip())
 

@@ -1,6 +1,20 @@
-n = int(input().strip())
-p = list(map(int,input().strip().split(' ')))
+'''
+haveaniceday
+hae and via ecy
+'''
 
+import math
+def encryption(l):
 
-res = [p.index(p.index(i+1)+1)+1 for i in range(n)]
-print(res)
+    length = len(l)
+
+    row, col = math.floor(length**0.5), math.ceil(length**0.5)
+
+    return ' '.join([l[i::col] for i in range(col)])
+if __name__ == '__main__':
+
+    s = input()
+
+    result = encryption(s)
+
+    print(result)
