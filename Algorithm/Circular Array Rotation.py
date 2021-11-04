@@ -24,6 +24,13 @@ def circularArrayRotation(a, k, queries):
     a_rotate = a[-length_rotate:] + a[:-length_rotate]
 
     return [a_rotate[i] for i in queries]
+
+def circularArrayRotation(a, k, queries):
+
+    k_cir = k%len(a)
+    ans = [a[(k_cir*-1)+i] for i in range(len(a)) ]
+    return [ans[i] for i in queries]
+    
 if __name__ == '__main__':
 
     first_multiple_input = input().rstrip().split()

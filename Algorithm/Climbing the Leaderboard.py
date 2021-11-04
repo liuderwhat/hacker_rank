@@ -7,20 +7,25 @@
 def climbingLeaderboard2(ranked, player):
     # 10 20 40 50 100
     # 5  4  3  2  1
+    # 讓分數轉set再轉list並作排序
     ranked = list(sorted(set(ranked)))
+    # 因為題目有說選手分數會越來越高，所以用cur計數
     cur = 0
     ans = []
     for i in player:
 
+        # 起始直以cur開始(也可以放0)，這邊不管cur便多少，還是會跑len(ranked)-cur
         for x in range(cur, len(ranked)):
-
+            # 當排名不再往前，就計算排名
+            # 因為是小到大，所以是用排名數-cur+1
             if ranked[x] > i:
                 ans.append(len(ranked)-cur+1)
                 break
+            # 若可再往前一名，cur就+1，
             else:
                 cur = cur + 1
-
-        if cur == len(ranked):
+        # 當跑完迴圈就是第一名
+        else:
             ans.append(1)
 
     return ans
