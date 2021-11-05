@@ -1,14 +1,46 @@
-import math
+import sys
 
-def encryption(s):
+class Node:
+    def __init__(self,data):
+        self.right=self.left=None
+        self.data = data
+class Solution:
+    def insert(self,root,data):
+        if root==None:
+            return Node(data)
+        else:
+            if data<=root.data:
+                cur=self.insert(root.left,data)
+                root.left=cur
+            else:
+                cur=self.insert(root.right,data)
+                root.right=cur
+        return root
 
-    row, col = math.floor(math.sqrt(len(s))), math.ceil(math.sqrt(len(s)))
+    def levelOrder(self,root):
 
-    return [s[i::col] for i in range(col)]
+        q = []
 
-if __name__ == '__main__':
-    s = input()
+        if root:
+            q.append(root)
+        else:
+            q = []
 
-    result = encryption(s)
+        while q:
 
-    print(result)
+            node = q.pop(0)
+            print(node.data, end='')
+
+            if node.left:
+                q.append(node.left)
+
+            if node.right:
+                q.append(node.right)
+
+T=int(input())
+myTree=Solution()
+root=None
+for i in range(T):
+    data=int(input())
+    root=myTree.insert(root,data)
+myTree.levelOrder(root)
