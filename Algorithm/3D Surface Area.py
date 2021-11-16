@@ -47,7 +47,6 @@ def surfaceArea(A):
     fb_area = sum(A[0])+sum(A[-1])
 
     area += fb_area
-    
 
     # 計算重疊的部分
 
